@@ -1,0 +1,17 @@
+{
+  "arbitrum-one": {
+    "L2Pool": {
+      "address": "0x794a61358D6845594F94dc1DB02A252b5b4814aD",
+      "startBlock": 7742429
+    },
+    "aUSDC": {
+      "address": "0x625E7708f30cA75bfd92586e17077590C60eb4cD"
+    },
+    "aUSDT": {
+      "address": "0x6ab707Aca953eDAeFBc4fD23bA73294241490620"
+    },
+    "aWETH": {
+      "address": "0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8"
+    }
+  }
+}

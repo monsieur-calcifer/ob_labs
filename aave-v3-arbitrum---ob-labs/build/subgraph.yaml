@@ -1,0 +1,182 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: schema.graphql
+dataSources:
+  - kind: ethereum
+    name: L2Pool
+    network: arbitrum-one
+    source:
+      address: "0x794a61358D6845594F94dc1DB02A252b5b4814aD"
+      abi: L2Pool
+      startBlock: 7742429
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BackUnbacked
+        - Borrow
+        - FlashLoan
+        - IsolationModeTotalDebtUpdated
+        - LiquidationCall
+        - MintUnbacked
+        - MintedToTreasury
+        - RebalanceStableBorrowRate
+        - Repay
+        - ReserveDataUpdated
+        - ReserveUsedAsCollateralDisabled
+        - ReserveUsedAsCollateralEnabled
+        - Supply
+        - SwapBorrowRateMode
+        - UserEModeSet
+        - Withdraw
+      abis:
+        - name: L2Pool
+          file: L2Pool/abis/L2Pool.json
+      eventHandlers:
+        - event: BackUnbacked(indexed address,indexed address,uint256,uint256)
+          handler: handleBackUnbacked
+        - event: Borrow(indexed address,address,indexed address,uint256,uint8,uint256,indexed
+            uint16)
+          handler: handleBorrow
+        - event: FlashLoan(indexed address,address,indexed address,uint256,uint8,uint256,indexed
+            uint16)
+          handler: handleFlashLoan
+        - event: IsolationModeTotalDebtUpdated(indexed address,uint256)
+          handler: handleIsolationModeTotalDebtUpdated
+        - event: LiquidationCall(indexed address,indexed address,indexed
+            address,uint256,uint256,address,bool)
+          handler: handleLiquidationCall
+        - event: MintUnbacked(indexed address,address,indexed address,uint256,indexed uint16)
+          handler: handleMintUnbacked
+        - event: MintedToTreasury(indexed address,uint256)
+          handler: handleMintedToTreasury
+        - event: RebalanceStableBorrowRate(indexed address,indexed address)
+          handler: handleRebalanceStableBorrowRate
+        - event: Repay(indexed address,indexed address,indexed address,uint256,bool)
+          handler: handleRepay
+        - event: ReserveDataUpdated(indexed address,uint256,uint256,uint256,uint256,uint256)
+          handler: handleReserveDataUpdated
+        - event: ReserveUsedAsCollateralDisabled(indexed address,indexed address)
+          handler: handleReserveUsedAsCollateralDisabled
+        - event: ReserveUsedAsCollateralEnabled(indexed address,indexed address)
+          handler: handleReserveUsedAsCollateralEnabled
+        - event: Supply(indexed address,address,indexed address,uint256,indexed uint16)
+          handler: handleSupply
+        - event: SwapBorrowRateMode(indexed address,indexed address,uint8)
+          handler: handleSwapBorrowRateMode
+        - event: UserEModeSet(indexed address,uint8)
+          handler: handleUserEModeSet
+        - event: Withdraw(indexed address,indexed address,indexed address,uint256)
+          handler: handleWithdraw
+      file: L2Pool/L2Pool.wasm
+  - kind: ethereum
+    name: aUSDC
+    network: arbitrum-one
+    source:
+      address: "0x625E7708f30cA75bfd92586e17077590C60eb4cD"
+      abi: aUSDC
+      startBlock: 7742576
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - BalanceTransfer
+        - Burn
+        - Initialized
+        - Mint
+        - Transfer
+      abis:
+        - name: aUSDC
+          file: aUSDC/abis/aUSDC.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: BalanceTransfer(indexed address,indexed address,uint256,uint256)
+          handler: handleBalanceTransfer
+        - event: Burn(indexed address,indexed address,uint256,uint256,uint256)
+          handler: handleBurn
+        - event: Initialized(indexed address,indexed
+            address,address,address,uint8,string,string,bytes)
+          handler: handleInitialized
+        - event: Mint(indexed address,indexed address,uint256,uint256,uint256)
+          handler: handleMint
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: aUSDC/aUSDC.wasm
+  - kind: ethereum
+    name: aUSDT
+    network: arbitrum-one
+    source:
+      address: "0x6ab707Aca953eDAeFBc4fD23bA73294241490620"
+      abi: aUSDT
+      startBlock: 7742579
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - aUSDTApproval
+        - aUSDTBalanceTransfer
+        - aUSDTBurn
+        - aUSDTInitialized
+        - aUSDTMint
+        - aUSDTTransfer
+      abis:
+        - name: aUSDT
+          file: aUSDT/abis/aUSDT.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: BalanceTransfer(indexed address,indexed address,uint256,uint256)
+          handler: handleBalanceTransfer
+        - event: Burn(indexed address,indexed address,uint256,uint256,uint256)
+          handler: handleBurn
+        - event: Initialized(indexed address,indexed
+            address,address,address,uint8,string,string,bytes)
+          handler: handleInitialized
+        - event: Mint(indexed address,indexed address,uint256,uint256,uint256)
+          handler: handleMint
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: aUSDT/aUSDT.wasm
+  - kind: ethereum
+    name: aWETH
+    network: arbitrum-one
+    source:
+      address: "0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8"
+      abi: aWETH
+      startBlock: 7742579
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - aWETHApproval
+        - aWETHBalanceTransfer
+        - aWETHBurn
+        - aWETHInitialized
+        - aWETHMint
+        - aWETHTransfer
+      abis:
+        - name: aWETH
+          file: aWETH/abis/aWETH.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: BalanceTransfer(indexed address,indexed address,uint256,uint256)
+          handler: handleBalanceTransfer
+        - event: Burn(indexed address,indexed address,uint256,uint256,uint256)
+          handler: handleBurn
+        - event: Initialized(indexed address,indexed
+            address,address,address,uint8,string,string,bytes)
+          handler: handleInitialized
+        - event: Mint(indexed address,indexed address,uint256,uint256,uint256)
+          handler: handleMint
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: aWETH/aWETH.wasm

@@ -1,0 +1,383 @@
+type BackUnbacked @entity(immutable: true) {
+  id: Bytes!
+  reserve: Bytes! # address
+  backer: Bytes! # address
+  amount: BigInt! # uint256
+  fee: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Borrow @entity(immutable: true) {
+  id: Bytes!
+  reserve: Bytes! # address
+  user: Bytes! # address
+  onBehalfOf: Bytes! # address
+  amount: BigInt! # uint256
+  interestRateMode: Int! # uint8
+  borrowRate: BigInt! # uint256
+  referralCode: Int! # uint16
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type FlashLoan @entity(immutable: true) {
+  id: Bytes!
+  target: Bytes! # address
+  initiator: Bytes! # address
+  asset: Bytes! # address
+  amount: BigInt! # uint256
+  interestRateMode: Int! # uint8
+  premium: BigInt! # uint256
+  referralCode: Int! # uint16
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type IsolationModeTotalDebtUpdated @entity(immutable: true) {
+  id: Bytes!
+  asset: Bytes! # address
+  totalDebt: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type LiquidationCall @entity(immutable: true) {
+  id: Bytes!
+  collateralAsset: Bytes! # address
+  debtAsset: Bytes! # address
+  user: Bytes! # address
+  debtToCover: BigInt! # uint256
+  liquidatedCollateralAmount: BigInt! # uint256
+  liquidator: Bytes! # address
+  receiveAToken: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MintUnbacked @entity(immutable: true) {
+  id: Bytes!
+  reserve: Bytes! # address
+  user: Bytes! # address
+  onBehalfOf: Bytes! # address
+  amount: BigInt! # uint256
+  referralCode: Int! # uint16
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type MintedToTreasury @entity(immutable: true) {
+  id: Bytes!
+  reserve: Bytes! # address
+  amountMinted: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type RebalanceStableBorrowRate @entity(immutable: true) {
+  id: Bytes!
+  reserve: Bytes! # address
+  user: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Repay @entity(immutable: true) {
+  id: Bytes!
+  reserve: Bytes! # address
+  user: Bytes! # address
+  repayer: Bytes! # address
+  amount: BigInt! # uint256
+  useATokens: Boolean! # bool
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ReserveDataUpdated @entity(immutable: true) {
+  id: Bytes!
+  reserve: Bytes! # address
+  liquidityRate: BigInt! # uint256
+  stableBorrowRate: BigInt! # uint256
+  variableBorrowRate: BigInt! # uint256
+  liquidityIndex: BigInt! # uint256
+  variableBorrowIndex: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ReserveUsedAsCollateralDisabled @entity(immutable: true) {
+  id: Bytes!
+  reserve: Bytes! # address
+  user: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ReserveUsedAsCollateralEnabled @entity(immutable: true) {
+  id: Bytes!
+  reserve: Bytes! # address
+  user: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Supply @entity(immutable: true) {
+  id: Bytes!
+  reserve: Bytes! # address
+  user: Bytes! # address
+  onBehalfOf: Bytes! # address
+  amount: BigInt! # uint256
+  referralCode: Int! # uint16
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SwapBorrowRateMode @entity(immutable: true) {
+  id: Bytes!
+  reserve: Bytes! # address
+  user: Bytes! # address
+  interestRateMode: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type UserEModeSet @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  categoryId: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Withdraw @entity(immutable: true) {
+  id: Bytes!
+  reserve: Bytes! # address
+  user: Bytes! # address
+  to: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type Approval @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  spender: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BalanceTransfer @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+  index: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Burn @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  target: Bytes! # address
+  value: BigInt! # uint256
+  balanceIncrease: BigInt! # uint256
+  index: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Initialized @entity(immutable: true) {
+  id: Bytes!
+  underlyingAsset: Bytes! # address
+  pool: Bytes! # address
+  treasury: Bytes! # address
+  incentivesController: Bytes! # address
+  aTokenDecimals: Int! # uint8
+  aTokenName: String! # string
+  aTokenSymbol: String! # string
+  params: Bytes! # bytes
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Mint @entity(immutable: true) {
+  id: Bytes!
+  caller: Bytes! # address
+  onBehalfOf: Bytes! # address
+  value: BigInt! # uint256
+  balanceIncrease: BigInt! # uint256
+  index: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Transfer @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type aUSDTApproval @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  spender: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type aUSDTBalanceTransfer @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+  index: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type aUSDTBurn @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  target: Bytes! # address
+  value: BigInt! # uint256
+  balanceIncrease: BigInt! # uint256
+  index: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type aUSDTInitialized @entity(immutable: true) {
+  id: Bytes!
+  underlyingAsset: Bytes! # address
+  pool: Bytes! # address
+  treasury: Bytes! # address
+  incentivesController: Bytes! # address
+  aTokenDecimals: Int! # uint8
+  aTokenName: String! # string
+  aTokenSymbol: String! # string
+  params: Bytes! # bytes
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type aUSDTMint @entity(immutable: true) {
+  id: Bytes!
+  caller: Bytes! # address
+  onBehalfOf: Bytes! # address
+  value: BigInt! # uint256
+  balanceIncrease: BigInt! # uint256
+  index: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type aUSDTTransfer @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+type aWETHApproval @entity(immutable: true) {
+  id: Bytes!
+  owner: Bytes! # address
+  spender: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type aWETHBalanceTransfer @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+  index: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type aWETHBurn @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  target: Bytes! # address
+  value: BigInt! # uint256
+  balanceIncrease: BigInt! # uint256
+  index: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type aWETHInitialized @entity(immutable: true) {
+  id: Bytes!
+  underlyingAsset: Bytes! # address
+  pool: Bytes! # address
+  treasury: Bytes! # address
+  incentivesController: Bytes! # address
+  aTokenDecimals: Int! # uint8
+  aTokenName: String! # string
+  aTokenSymbol: String! # string
+  params: Bytes! # bytes
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type aWETHMint @entity(immutable: true) {
+  id: Bytes!
+  caller: Bytes! # address
+  onBehalfOf: Bytes! # address
+  value: BigInt! # uint256
+  balanceIncrease: BigInt! # uint256
+  index: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type aWETHTransfer @entity(immutable: true) {
+  id: Bytes!
+  from: Bytes! # address
+  to: Bytes! # address
+  value: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
