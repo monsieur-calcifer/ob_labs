@@ -448,11 +448,12 @@ result_df = result_df.with_columns([
 ])
 
 # Select the relevant columns
-selected_df = result_df.select([
+selected_df = end_df.select([
     pl.col('ir_block_number').alias('block_number'),
     pl.col('ir_block_timestamp').alias('timestamp'),
     pl.col('user_address').alias('owner_address'),
     pl.col('token_address'),
+    pl.col('event_type'),
     pl.col('new_net_amount_v2').alias('token_amount')
 ])
 
